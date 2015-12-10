@@ -20,7 +20,7 @@ var {
 var timeline = React.createClass({
   render: function() {
     var navigationView = (
-      <View style={{flex: 1, backgroundColor: '#fff'}}>
+      <View style={{flex: 1, backgroundColor: '#25323B'}}>
         <Text style={{margin: 10, fontSize: 15, textAlign: 'left'}}>Im in the Drawer!</Text>
       </View>
     );
@@ -60,7 +60,6 @@ UserApi.Open("192.168.10.53",9090,
     );
   }
 );
-
 
 
 AppRegistry.registerComponent('timeline', () => timeline);
