@@ -1,0 +1,12 @@
+{
+  "name": "time",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "react-native start"
+  },
+  "dependencies": {
+    "react-native": "^0.16.0",
+    "thrift": "^0.9.3"
+  }
+}
