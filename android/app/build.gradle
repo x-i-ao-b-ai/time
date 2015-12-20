@@ -90,4 +90,5 @@ dependencies {
     compile "com.facebook.react:react-native:0.16.+"
     compile 'org.apache.thrift:libthrift:0.9.3'
     compile 'javax.annotation:javax.annotation-api:1.2'
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
 }

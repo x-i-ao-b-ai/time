@@ -1,6 +1,7 @@
 package me.asyou.time;
 
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
 
@@ -11,10 +12,18 @@ import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 
+import com.readystatesoftware.systembartint.SystemBarTintManager;
+
+import android.view.Window;
+import android.view.WindowManager;
+import android.annotation.TargetApi;
+
 public class MainActivity extends Activity implements DefaultHardwareBackBtnHandler {
 
     private ReactInstanceManager mReactInstanceManager;
     private ReactRootView mReactRootView;
+
+    private static SystemBarTintManager tintManager = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +40,36 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();
 
-        mReactRootView.startReactApplication(mReactInstanceManager, "timeline", null);
+        mReactRootView.startReactApplication(mReactInstanceManager, "time", null);
 
         setContentView(mReactRootView);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            setTranslucentStatus(true);
+        }
+
+        SystemBarTintManager tintManager = new SystemBarTintManager(this);
+        tintManager.setStatusBarTintEnabled(true);
+
+        tintManager.setStatusBarAlpha(0.34f);
+    }
+
+    public static void setStatusBarAlpha(float val){
+        tintManager.setStatusBarAlpha(val);
+    }
+
+
+    @TargetApi(19)
+    private void setTranslucentStatus(boolean on) {
+        Window win = getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+        if (on) {
+            winParams.flags |= bits;
+        } else {
+            winParams.flags &= ~bits;
+        }
+        win.setAttributes(winParams);
     }
 
     @Override
