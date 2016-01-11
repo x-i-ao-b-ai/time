@@ -131,25 +131,25 @@ var LoadScreen = React.createClass({
 		return (
 			<View >
 			<ViewPager
-		        style={this.props.style}
-		        dataSource={this.state.dataSource}
-		        renderPage={this._renderPage}
-		        renderPageIndicator={true}
-		        isLoop={true}
-		        autoPlay={false}/>
+        style={this.props.style}
+        dataSource={this.state.dataSource}
+        renderPage={this._renderPage}
+        renderPageIndicator={true}
+        isLoop={true}
+        autoPlay={false}/>
 		    <Image source={require('image!logo')}  style={styles.logo} />
 		    <View  style={styles.foot}>
-		    	    	<TouchableOpacity  style={styles.btn}  onPress={this._onPressLogin}>
-					<Text style={styles.btn_text}>
-						连接账户
-					</Text>
-			    	</TouchableOpacity>
-			    	<View style={styles.split}></View>
-				<TouchableOpacity  style={styles.btn}  onPress={this._onPressRegister}>
-					<Text style={styles.btn_text}>
-						注册账户
-					</Text>
-			    </TouchableOpacity>
+			    <TouchableOpacity  style={styles.btn}  onPress={this._onPressLogin}>
+						<Text style={styles.btn_text}>
+							连接账户
+						</Text>
+				  </TouchableOpacity>
+				  <View style={styles.split}></View>
+					<TouchableOpacity  style={styles.btn}  onPress={this._onPressRegister}>
+						<Text style={styles.btn_text}>
+							注册账户
+						</Text>
+				  </TouchableOpacity>
 		    </View>
 	    </View>
 		);
@@ -168,13 +168,13 @@ var LoadScreen = React.createClass({
 				<Text style={styles.page_desc}>
 					{data.desc}
 				</Text> 
-		     </View>
+		  </View>
 		);
 	},
 	_onPressLogin: function() {
 		this.props.navigator.push({
 			title: "login",
-			name: 'login',
+			name: 'loginStep1',
 		});
 	},
 	_onPressRegister: function() {
