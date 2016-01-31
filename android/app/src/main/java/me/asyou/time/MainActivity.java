@@ -1,6 +1,7 @@
 package me.asyou.time;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -40,9 +41,15 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();
 
+        //启动react
         mReactRootView.startReactApplication(mReactInstanceManager, "time", null);
 
         setContentView(mReactRootView);
+
+        //注册tox的服务到手机
+        Intent intent = new Intent(this,me.asyou.tox.ToxService.class);
+
+        startService(intent);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             setTranslucentStatus(true);

@@ -15,12 +15,15 @@ var {
 	ListView,
 	ToastAndroid,
 	Platform,
+	DeviceEventEmitter,
 } = React;
 
 //var Drawer = require('react-native-drawer');
 var DRAWER_REF = 'drawer';
 var DRAWER_WIDTH_LEFT = 56;
-var GiftedMessenger = require('../modules/GiftedMessenger');
+var GiftedMessenger = require('../modules/messenger/GiftedMessenger');
+//var GiftedMessenger = require('react-native-gifted-messenger');
+var httpdebug = require('../modules/httpdebug')
 
 var toolbarActions = [{
 	title: '搜索',
@@ -48,6 +51,7 @@ var Main = React.createClass({
 			</View>
 		);
 	},
+
 	getMessages() {
 		return [{
 			text: 'Are you building a chat app?',
@@ -148,6 +152,7 @@ var Main = React.createClass({
 			  ref={DRAWER_REF}
 			  drawerWidth={Dimensions.get('window').width - DRAWER_WIDTH_LEFT}
 			  keyboardDismissMode="on-drag"
+			  keyboardShouldPersistTaps={true}
 			  drawerPosition={DrawerLayoutAndroid.positions.Left}
 			  renderNavigationView={this._renderNavigationView}>
 			  <View style={styles.container}>
@@ -160,10 +165,12 @@ var Main = React.createClass({
 			      actions={toolbarActions}
 			      onIconClicked={() => this.refs[DRAWER_REF].openDrawer()}
 			      onActionSelected={this.onActionSelected}/>
-			    <GiftedMessenger
+
+			     <GiftedMessenger
 			        ref={(c) => this._GiftedMessenger = c}
+			    
 			        styles={{
-			            bubbleRight: {
+			          bubbleRight: {
 			            marginLeft: 70,
 			            backgroundColor: '#007aff',
 			          },
@@ -188,7 +195,8 @@ var Main = React.createClass({
 			        handleEmailPress={this.handleEmailPress}
 			        
 			        inverted={true}
-		         />
+			      />
+
 			  </View>		
 		  </DrawerLayoutAndroid>
 		);
@@ -232,7 +240,6 @@ var Main = React.createClass({
 var styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		flexDirection: 'column',
 		backgroundColor: '#2E3E4B',
 	},
 	toolbar: {

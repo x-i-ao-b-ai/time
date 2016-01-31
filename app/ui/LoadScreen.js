@@ -130,28 +130,28 @@ var LoadScreen = React.createClass({
 	render: function() {
 		return (
 			<View >
-			<ViewPager
-        style={this.props.style}
-        dataSource={this.state.dataSource}
-        renderPage={this._renderPage}
-        renderPageIndicator={true}
-        isLoop={true}
-        autoPlay={false}/>
-		    <Image source={require('image!logo')}  style={styles.logo} />
-		    <View  style={styles.foot}>
-			    <TouchableOpacity  style={styles.btn}  onPress={this._onPressLogin}>
-						<Text style={styles.btn_text}>
-							连接账户
-						</Text>
-				  </TouchableOpacity>
-				  <View style={styles.split}></View>
-					<TouchableOpacity  style={styles.btn}  onPress={this._onPressRegister}>
-						<Text style={styles.btn_text}>
-							注册账户
-						</Text>
-				  </TouchableOpacity>
+				<ViewPager
+			        style={this.props.style}
+			        dataSource={this.state.dataSource}
+			        renderPage={this._renderPage}
+			        renderPageIndicator={true}
+			        isLoop={true}
+			        autoPlay={false}/>
+			    <Image source={require('image!logo')}  style={styles.logo} />
+			    <View  style={styles.foot}>
+				    <TouchableOpacity  style={styles.btn}  onPress={this._onPressLogin}>
+							<Text style={styles.btn_text}>
+								连接账户
+							</Text>
+					  </TouchableOpacity>
+					  <View style={styles.split}></View>
+						<TouchableOpacity  style={styles.btn}  onPress={this._onPressRegister}>
+							<Text style={styles.btn_text}>
+								注册账户
+							</Text>
+					  </TouchableOpacity>
+			    </View>
 		    </View>
-	    </View>
 		);
 	},
 
